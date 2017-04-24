@@ -202,7 +202,6 @@
     <Resource Include="Image\Close1.png" />
     <Resource Include="Image\openFolder.png" />
     <Resource Include="Image\图层 2.png" />
-    <Resource Include="View\未标题-1_Images1\图层 2.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\" />

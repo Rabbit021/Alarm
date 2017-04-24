@@ -57,8 +57,8 @@
             <Border x:Name="Splash" BorderBrush="Black" Grid.RowSpan="2" Background="#00000000"/>
             <Button x:Name="btnClose" Content="Button" Style="{DynamicResource CloseBtnStyle}"
 					Click="btnClose_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5,0" />
-            <TextBlock x:Name="header" HorizontalAlignment="Center" TextWrapping="Wrap" Text="安全高于一切  责任重于泰山"
-				VerticalAlignment="Center" FontSize="102" FontFamily="楷体" Foreground="Red" Margin="0,30" FontWeight="Bold">
+            <TextBlock x:Name="header" HorizontalAlignment="Center" Text="安全高于一切  责任重于泰山"
+				VerticalAlignment="Center" FontSize="80" FontFamily="楷体" Foreground="Red" Margin="0,30,0,0" FontWeight="Bold">
                 <TextBlock.Effect>
                     <DropShadowEffect Color="#FF515050" />
                 </TextBlock.Effect></TextBlock>
@@ -76,19 +76,17 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <TextBlock x:Name="提示任务" TextWrapping="Wrap" Text="{Binding SelectedItem.Title}" Style="{DynamicResource TipTitleStyle}" Visibility="Collapsed"  />
-                <Border Margin="0,10" Grid.RowSpan="2">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0">
-                        <Grid Margin="100,0">
-                            <Rectangle Fill="#99F4F4F5" RadiusY="80" RadiusX="80" Stroke="#33000000" StrokeThickness="0" Opacity="0.2">
-                                <Rectangle.Effect>
-                                    <DropShadowEffect Direction="-60" Opacity="0.6" ShadowDepth="5"/>
-                                </Rectangle.Effect>
-                            </Rectangle>
-                            <TextBlock TextWrapping="Wrap" Text="{Binding SelectedItem.Content}" FontWeight="Bold" FontSize="{Binding SelectedItem.AlarmFontSize}" 
-                                ScrollViewer.VerticalScrollBarVisibility="Hidden"  Style="{DynamicResource AlarmTextBlockStyle}" ScrollViewer.HorizontalScrollBarVisibility="Hidden" d:LayoutOverrides="Width, Height" Margin="80" LineHeight="64" />
-                        </Grid>
+                <Grid Margin="0,10" Grid.RowSpan="2">
+                    <Rectangle Fill="#99F4F4F5" RadiusY="80" RadiusX="80" Stroke="#33000000" StrokeThickness="0" Opacity="0.2" Margin="100,0">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Direction="-60" Opacity="0.6" ShadowDepth="5"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <ScrollViewer VerticalScrollBarVisibility="Hidden" Margin="0">
+                        <TextBlock TextWrapping="Wrap" Text="{Binding SelectedItem.Content}" FontWeight="Bold" FontSize="{Binding SelectedItem.AlarmFontSize}" 
+                                ScrollViewer.VerticalScrollBarVisibility="Hidden"  Style="{DynamicResource AlarmTextBlockStyle}" ScrollViewer.HorizontalScrollBarVisibility="Hidden" LineHeight="48" Margin="180,80" />
                     </ScrollViewer>
-                </Border>
+                </Grid>
                 <Grid Grid.Row="2">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" d:LayoutOverrides="LeftPosition, RightPosition" Margin="0">
                         <Button x:Name="Previous" Content="" Style="{DynamicResource EditBtn}"

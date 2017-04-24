@@ -1,0 +1,247 @@
+[
+    {
+        "Id": "b00bb997-1f13-44dc-a1e4-116cbde0f46b",
+        "State": 0,
+        "Title": "直播间巡机",
+        "Content": "1、巡查各直播间U盘播放准备情况2、各直播间调音台主机工作状态指示和电源指示是否正常，主屏有无弹窗等。主、备工作站协同工作是否正常、校时是否正常，延时器是否正常。3、导播间主、备工作站，A、B切换器、电话桥接器工作状态。4、巡查各直播间、导播间温度、湿度。",
+        "ItemType": 2,
+        "Time": "0:30:00",
+        "Date": "2016/2/24",
+        "WeekDays": [
+            {
+                "Name": "星期一",
+                "Week": 1,
+                "Checked": true
+            },
+            {
+                "Name": "星期二",
+                "Week": 2,
+                "Checked": true
+            },
+            {
+                "Name": "星期三",
+                "Week": 3,
+                "Checked": false
+            },
+            {
+                "Name": "星期四",
+                "Week": 4,
+                "Checked": true
+            },
+            {
+                "Name": "星期五",
+                "Week": 5,
+                "Checked": true
+            },
+            {
+                "Name": "星期六",
+                "Week": 6,
+                "Checked": true
+            },
+            {
+                "Name": "星期日",
+                "Week": 0,
+                "Checked": true
+            }
+        ],
+        "Audio": "Fall Out Boy - My Songs Know What You Did In The Dark Light Em Up.mp3",
+        "Volume": 10,
+        "AlarmFontSize": 0
+    },
+    {
+        "Id": "a97ee11c-82a3-4378-8099-d78b00f08833",
+        "State": 0,
+        "Title": "直播间巡机",
+        "Content": "1、各直播间调音台主机工作状态指示和电源指示是否正常，主屏有无弹窗等。主、备工作站协同工作是否正常、校时是否正常，延时器是否正常。2、导播间主、备工作站，A、B切换器、电话桥接器工作状态。3、巡查各直播间、导播间温度、湿度。4、302备用机房热备1278，日常状态是推起转播1、音频工作站为1278播出界面，并按下输出闸。",
+        "ItemType": 2,
+        "Time": "1:30:53",
+        "Date": "2016/2/24",
+        "WeekDays": [
+            {
+                "Name": "星期一",
+                "Week": 1,
+                "Checked": true
+            },
+            {
+                "Name": "星期二",
+                "Week": 2,
+                "Checked": true
+            },
+            {
+                "Name": "星期三",
+                "Week": 3,
+                "Checked": true
+            },
+            {
+                "Name": "星期四",
+                "Week": 4,
+                "Checked": true
+            },
+            {
+                "Name": "星期五",
+                "Week": 5,
+                "Checked": true
+            },
+            {
+                "Name": "星期六",
+                "Week": 6,
+                "Checked": true
+            },
+            {
+                "Name": "星期日",
+                "Week": 0,
+                "Checked": true
+            }
+        ],
+        "Audio": "Fall Out Boy - My Songs Know What You Did In The Dark Light Em Up.mp3",
+        "Volume": 10,
+        "AlarmFontSize": 0
+    },
+    {
+        "Id": "640f5445-9f10-40f8-8ded-2ac4d1842614",
+        "State": 0,
+        "Title": "直播间巡机",
+        "Content": "1、各直播间调音台主机工作状态指示和电源指示是否正常，主屏有无弹窗等。主、备工作站协同工作是否正常、校时是否正常，延时器是否正常。2、导播间主、备工作站，A、B切换器、电话桥接器工作状态。3、巡查各直播间、导播间温度、湿度。4、302备用机房热备1278，日常状态是推起转播1、音频工作站为1278播出界面，并按下输出闸。",
+        "ItemType": 2,
+        "Time": "20:50:20",
+        "Date": "2016/2/24",
+        "WeekDays": [
+            {
+                "Name": "星期一",
+                "Week": 1,
+                "Checked": true
+            },
+            {
+                "Name": "星期二",
+                "Week": 2,
+                "Checked": true
+            },
+            {
+                "Name": "星期三",
+                "Week": 3,
+                "Checked": false
+            },
+            {
+                "Name": "星期四",
+                "Week": 4,
+                "Checked": true
+            },
+            {
+                "Name": "星期五",
+                "Week": 5,
+                "Checked": true
+            },
+            {
+                "Name": "星期六",
+                "Week": 6,
+                "Checked": true
+            },
+            {
+                "Name": "星期日",
+                "Week": 0,
+                "Checked": true
+            }
+        ],
+        "Audio": "Fall Out Boy - My Songs Know What You Did In The Dark Light Em Up.mp3",
+        "Volume": 10,
+        "AlarmFontSize": 0
+    },
+    {
+        "Id": "d0dce39c-c639-4add-9f44-d023f8a55239",
+        "State": 0,
+        "Title": "直播间巡机",
+        "Content": "1、各直播间调音台主机工作状态指示和电源指示是否正常，主屏有无弹窗等。主、备工作站协同工作是否正常、校时是否正常，延时器是否正常。2、导播间主、备工作站，A、B切换器、电话桥接器工作状态。3、巡查各直播间、导播间温度、湿度。4、302备用机房热备1278，日常状态是推起转播1、音频工作站为1278播出界面，并按下输出闸。",
+        "ItemType": 2,
+        "Time": "11:01:55",
+        "Date": "2016/2/24",
+        "WeekDays": [
+            {
+                "Name": "星期一",
+                "Week": 1,
+                "Checked": true
+            },
+            {
+                "Name": "星期二",
+                "Week": 2,
+                "Checked": true
+            },
+            {
+                "Name": "星期三",
+                "Week": 3,
+                "Checked": true
+            },
+            {
+                "Name": "星期四",
+                "Week": 4,
+                "Checked": true
+            },
+            {
+                "Name": "星期五",
+                "Week": 5,
+                "Checked": true
+            },
+            {
+                "Name": "星期六",
+                "Week": 6,
+                "Checked": true
+            },
+            {
+                "Name": "星期日",
+                "Week": 0,
+                "Checked": true
+            }
+        ],
+        "Audio": "Fall Out Boy - My Songs Know What You Did In The Dark Light Em Up.mp3",
+        "Volume": 10,
+        "AlarmFontSize": 0
+    },
+    {
+        "Id": "0bad413e-09f4-425c-9ac7-e6b9418cbac8",
+        "State": 0,
+        "Title": "直播间巡机 ",
+        "Content": "自动播出结束时，巡视各频道播出人员到岗和遵章守纪情况。",
+        "ItemType": 2,
+        "Time": "11:01:43",
+        "Date": "2016/2/24",
+        "WeekDays": [
+            {
+                "Name": "星期一",
+                "Week": 1,
+                "Checked": true
+            },
+            {
+                "Name": "星期二",
+                "Week": 2,
+                "Checked": true
+            },
+            {
+                "Name": "星期三",
+                "Week": 3,
+                "Checked": true
+            },
+            {
+                "Name": "星期四",
+                "Week": 4,
+                "Checked": true
+            },
+            {
+                "Name": "星期五",
+                "Week": 5,
+                "Checked": true
+            },
+            {
+                "Name": "星期六",
+                "Week": 6,
+                "Checked": true
+            },
+            {
+                "Name": "星期日",
+                "Week": 0,
+                "Checked": true
+            }
+        ],
+        "Audio": "铃声2.wav",
+        "Volume": 10,
+        "AlarmFontSize": 0
+    }
+]

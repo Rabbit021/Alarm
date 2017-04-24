@@ -1,0 +1,114 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converter="clr-namespace:Alarm.Converter"
+    xmlns:Alarm="clr-namespace:Alarm" x:Name="WindowShow"
+    mc:Ignorable="d" x:Class="Alarm.View.ShowInfo"
+    Title="ShowInfo" WindowStyle="None" d:DesignWidth="1920" d:DesignHeight="1080" Left="0" Top="0" AllowsTransparency="True" >
+    <Window.Resources>
+        <converter:AudioSourceConvert x:Key="AudioSourceConvert" />
+        <Storyboard x:Key="Shake" RepeatBehavior="00:00:01" SpeedRatio="15" Completed="board_Completed">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Left" Storyboard.TargetName="WindowShow">
+                <LinearDoubleKeyFrame KeyTime="00:00:00.0000000" Value="0" />
+                <LinearDoubleKeyFrame KeyTime="00:00:00.1000000" Value="10" />
+                <LinearDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0" />
+                <LinearDoubleKeyFrame KeyTime="00:00:00.5000000" Value="-10" />
+                <LinearDoubleKeyFrame KeyTime="00:00:00.7000000" Value="0" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Top" Storyboard.TargetName="WindowShow">
+                <LinearDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0" />
+                <LinearDoubleKeyFrame KeyTime="00:00:00.1000000" Value="10" />
+                <LinearDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0" />
+                <LinearDoubleKeyFrame KeyTime="00:00:00.5000000" Value="-10" />
+                <LinearDoubleKeyFrame KeyTime="00:00:00.7000000" Value="0" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Splash">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="Splash">
+                <EasingColorKeyFrame KeyTime="0" Value="Black"/>
+                <EasingColorKeyFrame KeyTime="0:0:1" Value="#00000000"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Splash">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <!--	<Window.Triggers>-->
+    <!--		<EventTrigger RoutedEvent="FrameworkElement.Loaded">-->
+    <!--			<BeginStoryboard Storyboard="{StaticResource Shake}"/>-->
+    <!--		</EventTrigger>-->
+    <!--	</Window.Triggers>-->
+    <Window.RenderTransform>
+        <TranslateTransform Y="0" X="0" />
+    </Window.RenderTransform>
+    <Border x:Name="window" Style="{DynamicResource MainBoderStyle}">
+        <Border.Background>
+            <ImageBrush ImageSource="/Alarm;component/Image/图层 2.png"/>
+        </Border.Background>
+        <Grid Style="{DynamicResource ShowBackGridStyle}" Background="{x:Null}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel x:Name="headerBg" Orientation="Vertical"/>
+            <Border x:Name="Splash" BorderBrush="Black" Grid.RowSpan="2" Background="#00000000"/>
+            <Button x:Name="btnClose" Content="Button" Style="{DynamicResource CloseBtnStyle}"
+					Click="btnClose_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5,0" />
+            <TextBlock x:Name="header" HorizontalAlignment="Center" TextWrapping="Wrap" Text="安全高于一切  责任重于泰山"
+				VerticalAlignment="Center" FontSize="102" FontFamily="楷体" Foreground="Red" Margin="0,30" FontWeight="Bold">
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="#FF515050" />
+                </TextBlock.Effect></TextBlock>
+            <TextBlock x:Name="安全高于一切_责任重于泰山" Foreground="#FFF30000" FontSize="102" FontFamily="FZDHTJW--GB1-0" IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" LineHeight="102" TextAlignment="Left" TextWrapping="Wrap" Text="安全高于一切     责任重于泰山" d:LayoutOverrides="Width" HorizontalAlignment="Center" Margin="0,30" d:IsHidden="True" Visibility="Collapsed">
+                <TextBlock.Effect>
+                    <DropShadowEffect BlurRadius="5" Color="Black" Direction="-60" Opacity="0.75" ShadowDepth="5"/>
+                </TextBlock.Effect></TextBlock>
+            <MediaElement x:Name="player" HorizontalAlignment="Left" Height="100"
+				VerticalAlignment="Top" Width="100" LoadedBehavior="Manual" UnloadedBehavior="Manual"
+				MediaEnded="player_MediaEnded" />
+            <Grid Grid.Row="1" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" MinHeight="80" />
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="提示任务" TextWrapping="Wrap" Text="{Binding SelectedItem.Title}" Style="{DynamicResource TipTitleStyle}" Visibility="Collapsed"  />
+                <Border Margin="0,10" Grid.RowSpan="2">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0">
+                        <Grid Margin="100,0">
+                            <Rectangle Fill="#99F4F4F5" RadiusY="80" RadiusX="80" Stroke="#33000000" StrokeThickness="0" Opacity="0.2">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect Direction="-60" Opacity="0.6" ShadowDepth="5"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+                            <TextBlock TextWrapping="Wrap" Text="{Binding SelectedItem.Content}" FontWeight="Bold" FontSize="{Binding SelectedItem.AlarmFontSize}" 
+                                ScrollViewer.VerticalScrollBarVisibility="Hidden"  Style="{DynamicResource AlarmTextBlockStyle}" ScrollViewer.HorizontalScrollBarVisibility="Hidden" d:LayoutOverrides="Width, Height" Margin="80" LineHeight="64" />
+                        </Grid>
+                    </ScrollViewer>
+                </Border>
+                <Grid Grid.Row="2">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" d:LayoutOverrides="LeftPosition, RightPosition" Margin="0">
+                        <Button x:Name="Previous" Content="" Style="{DynamicResource EditBtn}"
+            			BorderThickness="0" Width="{Binding Width, ElementName=Next}" Click="Previous_Click" Height="{Binding ActualHeight, ElementName=Next}" >
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Alarm;component/Image/previous.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button x:Name="Next" Content="" Style="{DynamicResource EditBtn}"
+            			BorderThickness="0" Margin="5,0,0,0" Width="50" Click="Next_Click" Height="50" >
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Alarm;component/Image/next.png"/>
+                            </Button.Background>
+                        </Button>
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="16" Width="80"
+            			Text="{Binding CountItem}" />
+                    </StackPanel>
+                    <Alarm:TimeClockControl d:LayoutOverrides="Height" HorizontalAlignment="Right" Margin="0,0,10,0" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

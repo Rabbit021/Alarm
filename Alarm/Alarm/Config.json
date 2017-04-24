@@ -1,0 +1,11 @@
+﻿{
+	"AlarmAudioSpan":"5",
+	"CloseAlarmSpan":"120",
+	"AlarmTopMost":"true",
+	"HeaderColor":"#FFFF0000",
+	"HeaderTwoPart" :"true",
+	"CanShake":"false",
+	"CanSplash":"true",
+	"SplashColor":"#FF000000",
+	"Password":"123"
+}

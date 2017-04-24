@@ -1,0 +1,223 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" xmlns:Converter="clr-namespace:Alarm.Converter"
+    mc:Ignorable="d" x:Class="Alarm.View.TaskDetail"
+    xmlns:m="clr-namespace:Xceed.Wpf.Toolkit.Media.Animation;assembly=Xceed.Wpf.Toolkit"
+    Title="TaskDetail" Height="500" Width="700" FocusVisualStyle="{DynamicResource ButtonFocusVisual}"
+    WindowStyle="None" WindowStartupLocation="CenterScreen"
+    MouseLeftButtonDown="bg_MouseLeftButtonDown" ResizeMode="CanMinimize" Icon="/Alarm;component/Image/Button/add.ico">
+    <Window.Resources>
+    	<Converter:AudioSourceConvert x:Key="AudioSourceConvert"/>
+        <Converter:VolumeConverter x:Key="VolumeConverter" />
+
+        <Converter:FileNameToPathConverter x:Key="FileNameToPathConverter" />
+        <Converter:TimeConverter x:Key="TimeConverter" />
+        <Converter:TaskTypeCollectionConverter x:Key="TaskTypeCollectionConverter" />
+        <Converter:TaskTypeConverter x:Key="TaskTypeConverter" />
+        <Converter:WeekDayVisibleConverter x:Key="WeekDayVisibleConverter" />
+        <Style x:Key="TaskListBoxStyle" TargetType="{x:Type ListBox}">
+            <Setter Property="BorderBrush" Value="#FFFBFBFB" />
+            <Setter Property="ItemContainerStyle">
+                <Setter.Value>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Margin" Value="0 2 0 0" />
+                        <Setter Property="Height" Value="25" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0,1" StartPoint="1,0">
+                                            <GradientStop Color="#FF4DAAC6" Offset="0" />
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+	<Window.Triggers>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="player"/>
+	</Window.Triggers>
+    <Border x:Name="mainBoder" Style="{DynamicResource MainBoderStyle}" BorderThickness="1" BorderBrush="#FF292828">
+        <Grid Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="47*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.RowSpan="2">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,468.12">
+                    <StackPanel.Background>
+                        <ImageBrush />
+                    </StackPanel.Background>
+                    <Image Source="/Alarm;component/Image/App.ico" HorizontalAlignment="Left" Margin="9,0,3,0"
+                           VerticalAlignment="Center" Width="20" Height="20" />
+                    <TextBlock x:Name="lblTask" TextWrapping="Wrap" Text="任务配置" VerticalAlignment="Center"
+                               Margin="3,0,0,0" />
+                    <Button x:Name="btnClose" Content="Button" Style="{DynamicResource CloseBtnStyle}"
+                            Click="btnClose_Click" HorizontalAlignment="Right" Margin="590,0,0,0" />
+                </StackPanel>
+                <Grid Margin="0,29.88,0,0">
+                	<Grid.Background>
+                		<SolidColorBrush Color="{DynamicResource BgColor}"/>
+                	</Grid.Background>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="56" />
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <GroupBox Header="基本设置" Margin="5" BorderThickness="0.5">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="11*" />
+                                    <RowDefinition Height="47*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35*" />
+                                    <ColumnDefinition Width="304*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name="任务名称" HorizontalAlignment="Center" TextWrapping="Wrap"
+                                           VerticalAlignment="Center" Text="任务名称" Style="{DynamicResource Header}" />
+                                <TextBox x:Name="tb任务名称" TextWrapping="Wrap" Text="{Binding CurrentTask.Title}"
+                                         Grid.Column="1" Margin="2" >
+                                	<TextBox.Background>
+                                		<SolidColorBrush Color="{DynamicResource TextBlockColor}"/>
+                                	</TextBox.Background>
+                                </TextBox>
+                                <TextBlock x:Name="任务内容" HorizontalAlignment="Center" TextWrapping="Wrap" Text="任务内容"
+                                           VerticalAlignment="Center" Grid.Row="1" Style="{DynamicResource Header}" />
+                                <TextBox TextWrapping="Wrap" Text="{Binding CurrentTask.Content}" Grid.Column="1"
+                                         Margin="2" Grid.Row="1"
+                                         VerticalScrollBarVisibility="Auto" AcceptsReturn="True" >
+                                	<TextBox.Background>
+                                		<SolidColorBrush Color="#FFFAFAFA"/>
+                                	</TextBox.Background>
+                                </TextBox>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Header="提示设置" BorderThickness="0.5" Grid.Row="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="59*" />
+                                    <ColumnDefinition Width="116*" />
+                                    <ColumnDefinition Width="511*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name="时间选择" TextWrapping="Wrap" Text="时间选择" VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" Style="{DynamicResource Header}"
+                                           Margin="5.5,15.403" Width="48" />
+                                <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Column="1"
+                                            Margin="10,0,0,0">
+                                    <DatePicker x:Name="dp_StartDate" Margin="2,0,0,0"
+                                                SelectedDate="{Binding CurrentTask.Date}" Background="Transparent"
+                                                VerticalContentAlignment="Stretch" VerticalAlignment="Center"
+                                                HorizontalAlignment="Center" Text="h" />
+                                    <xctk:TimePicker x:Name="h" Padding="3,0,0,0" Margin="10,10.903,0,10.903"
+                                                     TimeInterval="0:0:1"
+                                                     Value="{Binding CurrentTask.Time, Converter={StaticResource TimeConverter}, Mode=TwoWay}"
+                                                     HorizontalContentAlignment="Center"
+                                                     VerticalContentAlignment="Center" VerticalAlignment="Center"
+                                                     Width="136.333" Height="24" FormatString="" Format="LongTime">
+                                        <xctk:TimePicker.Background>
+                                            <SolidColorBrush Color="{DynamicResource TextBlockColor}" />
+                                        </xctk:TimePicker.Background>
+                                    </xctk:TimePicker>
+                                </StackPanel>
+                                <TextBlock x:Name="任务类型" TextWrapping="Wrap" VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" Style="{DynamicResource Header}" Grid.Row="1"
+                                           Width="48" Margin="5.5,15.403">
+                                    <Run Text="任务类型" />
+                                </TextBlock>
+                                <ComboBox x:Name="comboBox" Grid.Column="1" Grid.Row="1"
+                                          SelectedItem="{Binding CurrentTask.ItemType, Converter={StaticResource TaskTypeConverter}, Mode=TwoWay}"
+                                          ItemContainerStyle="{DynamicResource ComboBoxItemStyle1}"
+                                          ItemsSource="{Binding TypeCollection, Converter={StaticResource TaskTypeCollectionConverter}}"
+                                          Style="{DynamicResource ComboBoxStyle1}" VerticalContentAlignment="Center"
+                                          BorderThickness="0" VerticalAlignment="Center" Margin="10,10,15,10" >
+                                	<ComboBox.Background>
+                                		<SolidColorBrush Color="{DynamicResource TextBlockColor}"/>
+                                	</ComboBox.Background>
+                                </ComboBox>
+                                <ListBox Grid.Column="2" Grid.Row="1" SelectionMode="Multiple" Margin="5,7.903"
+                                         ItemsPanel="{DynamicResource ItemsPanelTemplate1}"
+                                         ItemsSource="{Binding CurrentTask.WeekDays}"
+                                         ItemContainerStyle="{DynamicResource WeekDay}" Background="{x:Null}"
+                                         BorderThickness="0"
+                                         Visibility="{Binding CurrentTask.ItemType, Converter={StaticResource WeekDayVisibleConverter}}" />
+                                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="铃声设置"
+                                           VerticalAlignment="Center" Grid.Row="2" Style="{DynamicResource Header}"
+                                           Height="Auto" />
+                                <Grid Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="1" Height="25">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="157*" />
+                                        <ColumnDefinition Width="130*" />
+                                        <ColumnDefinition Width="340*" />
+                                    </Grid.ColumnDefinitions>
+                                    <ComboBox x:Name="cboAudio" Style="{DynamicResource ComboBoxStyle1}"
+                                              Margin="10,1.582,0,1.582"
+                                              SelectedItem="{Binding CurrentTask.Audio, Mode=TwoWay}"
+                                              ItemsSource="{Binding AllAudio}"
+                                               VerticalAlignment="Center" SelectionChanged="cboAudio_SelectionChanged"
+                                              Height="21.836" >
+                                    	<ComboBox.Background>
+                                    		<SolidColorBrush Color="{DynamicResource TextBlockColor}"/>
+                                    	</ComboBox.Background>
+                                    </ComboBox>
+                                    <Slider x:Name="sdVolume" Grid.Column="1" Margin="5,0"
+                                            Style="{DynamicResource SliderStyle1}" Maximum="1"
+                                            Value="{Binding CurrentTask.Volume, Mode=TwoWay}"  ValueChanged="sdVolume_ValueChanged" LargeChange="0.1" Interval="1">
+                                    	<Slider.Background>
+                                    		<SolidColorBrush Color="{DynamicResource BgColor}"/>
+                                    	</Slider.Background>
+                                    </Slider>
+
+                                    <MediaElement Name="player" Grid.Column="2" Source="{Binding CurrentTask.Audio, Converter={StaticResource AudioSourceConvert}}" Volume="{Binding Value, ElementName=sdVolume}" LoadedBehavior="Manual" UnloadedBehavior="Manual" />
+
+
+                                </Grid>
+                                <Canvas Grid.Column="2" Margin="145.5,10,192.5,10">
+                                	<ComboBox Height="25.806" Canvas.Left="53" Width="120" SelectedItem="{Binding CurrentTask.AlarmFontSize, Mode=TwoWay}" ItemsSource="{Binding FontSizes}" Style="{DynamicResource ComboBoxStyle1}">
+                                		<ComboBox.Background>
+                                			<SolidColorBrush Color="{DynamicResource TextBlockColor}"/>
+                                		</ComboBox.Background>
+                                	</ComboBox>
+                                	<TextBlock x:Name="提示字号设置" TextWrapping="Wrap" VerticalAlignment="Center"
+                                		HorizontalAlignment="Center" Style="{DynamicResource Header}"
+                                		Width="48" Canvas.Top="5.403" ><Run Text="提示字号设置"/></TextBlock>
+                                </Canvas>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                    <StackPanel Margin="0,5,0,4" Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+                    	<Button x:Name="Save" Content="保存" HorizontalAlignment="Center" ClickMode="Press"
+                    		Click="Save_Click" Style="{DynamicResource EditBtn}" FontSize="16"
+                    		FontWeight="Bold" Width="200" Height="47" >
+                    		<Button.Background>
+                    			<SolidColorBrush Color="{DynamicResource BtnColor}"/>
+                    		</Button.Background>
+                    	</Button>
+                    	<Button x:Name="PreView" Content="预览" HorizontalAlignment="Center" ClickMode="Press"
+                    		 Style="{DynamicResource EditBtn}" FontSize="16"
+                    		FontWeight="Bold" Width="200" Height="47" Margin="5,0,0,0" Command="{Binding PreviewCommand}" Background="{Binding Background, ElementName=Save}" />
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

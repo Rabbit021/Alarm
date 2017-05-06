@@ -42,11 +42,11 @@
     <Style x:Key="TipTitleStyle" TargetType="{x:Type TextBlock}">
         <Setter Property="Margin" Value="100,0"/>
         <Setter Property="FontFamily" Value="楷体" />
-        <Setter Property="FontSize" Value="40" />
+        <Setter Property="FontSize" Value="48" />
         <Setter Property="TextWrapping" Value="NoWrap"/>
         <Setter Property="TextTrimming" Value="None"/>
-        <Setter Property="Foreground" Value="{DynamicResource TipTitleBrush}"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontWeight" Value="Bold"/>
     </Style>
     <Style x:Key="ShowBackGridStyle" TargetType="{x:Type Grid}">
         <Setter Property="Background" Value="{DynamicResource ShowInfoBgBrush}"/>
